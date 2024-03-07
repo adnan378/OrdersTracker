@@ -10,10 +10,6 @@ const LogIn = ({navigation}) => {
     }
    return (
     <SafeAreaView style={{flex:1,backgroundColor:'#37474f'}}>
-      {/* <Text>LogIn</Text> */}
-      {/* <Button
-      title='LogIn'
-      onPress={goToNextScreen}/> */}
       
       <StatusBar hidden/>
       <View style={{flex:1,paddingHorizontal:20,paddingBottom:10,justifyContent:'center',alignItems:'center'}}>

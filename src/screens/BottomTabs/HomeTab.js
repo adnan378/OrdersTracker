@@ -26,23 +26,26 @@ export default function HomeTab() {
     useShadowColorFromDataset:false// optional
   };
   const chartConfig1= {
-    backgroundGradientFrom: '#eeeeee',//'#ff0000', // Start color (red)
-    backgroundGradientTo: '#eeeeee',//'#ff0000',   // End color (red)
+    backgroundGradientFrom: 'white',//'#ff0000', // Start color (red)
+    backgroundGradientTo: 'white',//'#ff0000',   // End color (red)
     color: (opacity = 1) => `rgba(55, 71, 79, ${opacity})`, // Bar color (blue)
+    //color: () => 'blue',
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     
   };
   const chartConfig2 = {
-    backgroundGradientFrom: '#eeeeee', // Start color (black)
-    backgroundGradientTo: '#eeeeee',   // End color (black)
+    
+    backgroundGradientFrom: 'white', // Start color (black)
+    backgroundGradientTo: 'white',   // End color (black)
     color: (opacity = 1) => `rgba(55, 71, 79, ${opacity})`, // Data color (black)
+    //color: (opacity = 1) => `rgba(55, 80, 240, ${opacity})`,
     strokeWidth: 16, // Width of the chart's lines
     barPercentage: 0.5,
     
   };
   const data2 = {
-    labels: ["Orders", "Pending", "Delivered"], // optional
+    labels: ["Delivered", "Pending", "Order"], // optional
     data: [0.4, 0.6, 0.8]
   };
   const data1 = {
@@ -92,11 +95,12 @@ export default function HomeTab() {
   ];
   return (
     <ScrollView >
-      <View style={{flex:1,backgroundColor:'#eeeeee',}} >
+      <View style={{flex:1,backgroundColor:'#eeeeee',paddingBottom:100}} >
+     <View style={{backgroundColor:'white',borderRadius:8,margin:8}}>
       <PieChart
   data={data}
  // width={screenWidth}
- width={420}
+ width={400}
   height={250}
   chartConfig={chartConfig}
   accessor={"population"}
@@ -107,26 +111,31 @@ export default function HomeTab() {
   
   //absolute
 />
+</View>
+<View style={{backgroundColor:'white',borderRadius:8,margin:8,paddingLeft:8}}>
 <BarChart
   //style={{}}
   data={data1}
-  width={400}
-  height={220}
+  width={370}
+  height={250}
   yAxisLabel="$"
   chartConfig={chartConfig1}
   //verticalLabelRotation={10}
   
 />
+</View >
+<View style={{backgroundColor:'white',borderRadius:8,margin:8,paddingLeft:8}}>
 <ProgressChart
   data={data2}
-  width={360}
-  height={200}
-  strokeWidth={16}
+  width={380}
+  height={250}
+  strokeWidth={20}
   radius={32}
   chartConfig={chartConfig2}
   hideLegend={false}
   
 />
+</View>
       </View>
     
       

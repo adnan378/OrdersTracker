@@ -4,6 +4,7 @@ import { Dropdown } from 'react-native-element-dropdown';
 import CustomButton from '../../components/CustomButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import DocumentPicker from 'react-native-document-picker';
 
 
 // const handleOptionSelect = (option) => {
@@ -15,6 +16,20 @@ const handleSubmitButton =()=>{
     
   // console.log("Submitted");
    Alert.alert("Your order is submitted")
+ }
+ const selectDoc =async () =>{
+  try{
+    const doc= await DocumentPicker.pick({
+      type:[DocumentPicker.types.pdf]
+    });
+    console.log(doc)
+  }catch(err){
+    if(DocumentPicker.isCancel(err))
+    console.log("User cancelled the upload",err)
+  else
+  console.log(err)
+  }
+
  }
 
 export default function AddOrderTab() {
@@ -41,7 +56,7 @@ export default function AddOrderTab() {
     <View style={{flex:1 ,backgroundColor:'#eeeeee'}}>
     <KeyboardAwareScrollView >
       
-      <View style={{ marginHorizontal: 40 ,}}>
+      <View style={{ marginHorizontal: 40 ,paddingBottom:100}}>
 
         <View style={{ marginVertical: 5 }}>
           <Text style={{ fontWeight: 'bold', fontSize: 17, color: 'black' }}>Product Name</Text>
@@ -145,9 +160,21 @@ export default function AddOrderTab() {
             placeholder="Enter status of payment"
             placeholderTextColor={"black"}
           />
+        </View >
+        <View style={{ marginVertical: 5 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 17, color: 'black' }}>Upload file</Text>
 
-
-
+          <TouchableOpacity onPress={selectDoc}>
+          <View
+            style={{ height:35,width:60,borderRadius: 5,justifyContent:'center',alignItems:'center', marginTop: 10, borderRadius: 5, borderColor: '#000000', borderWidth: 1, padding: 8 }}
+            //placeholder="Enter status of payment"
+            >
+               <Image 
+              source={require('../../assets/images/fileupload.png')}
+              style={{width:20,height:20,tintColor:'grey',marginLeft:30,}}
+              />
+            </View>
+            </TouchableOpacity>
         </View >
         {/* <View style={{ marginVertical: 10 }}>
           <Button title='Submit' color='green' />

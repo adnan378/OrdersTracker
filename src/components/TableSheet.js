@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView ,Alert} from 'react-native';
 import { Table, TableWrapper, Row } from 'react-native-table-component';
 import CustomButton from './CustomButton';
 import { color } from 'react-native-tailwindcss';
 import { log } from 'echarts/types/src/util/log.js';
+
+const handleEditButton =()=>{
+    
+  // console.log("Submitted");
+   Alert.alert("Your order is editted")
+ }
+ const handleDeleteButton =()=>{
+    
+  // console.log("Submitted");
+   Alert.alert("Your order is deleted")
+ }
 
 export default class ExampleThree extends Component {
   constructor(props) {
@@ -35,8 +46,8 @@ export default class ExampleThree extends Component {
     // }
     return(
       <View style={{flex:1,flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
-        <CustomButton title="  Edit  " onPress={console.log("editing")} color="#0277bd"/>
-        <CustomButton title="Delete" onPress={console.log("del")} color="#e53935"/>
+        <CustomButton title="  Edit  " onPress={handleEditButton} color="#0277bd"/>
+        <CustomButton title="Delete" onPress={handleDeleteButton} color="#e53935"/>
       </View>
     )
   }

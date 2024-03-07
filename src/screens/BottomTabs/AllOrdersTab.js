@@ -51,7 +51,7 @@ export default function AllOrdersTab() {
             title='Search'
             color='green'/> */}
             <View style={{height:80,width:80,margin:8,marginLeft:-3}}>
-            <CustomButton title="Submit" onPress={handleSubmitButton} color="#0277bd"/>
+            <CustomButton title="Search" onPress={handleSubmitButton} color="#0277bd"/>
             </View>
           
           </View>
