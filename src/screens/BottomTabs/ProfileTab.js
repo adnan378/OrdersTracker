@@ -1,5 +1,6 @@
-import { Button, StyleSheet, Text, View ,Image,TouchableOpacity, Alert} from 'react-native'
+import { Button, StyleSheet, Text, View ,Image,TouchableOpacity, Alert,ScrollView} from 'react-native'
 import React from 'react'
+import {colors} from '../../assets/colors'
 import CustomButton from '../../components/CustomButton'
 
 
@@ -12,9 +13,11 @@ const ProfileTab = ({navigation}) => {
         Alert.alert("You have been logged out!","Please login again")
     }
   return (
-    <View style={{flex:1,backgroundColor:'#eeeeee'}}>  
-         <View style={{flex:1,backgroundColor:'white',marginTop:40,marginHorizontal:40,marginBottom:100,borderBottomLeftRadius:40,borderBottomRightRadius:40,}}>
-        <View style={{backgroundColor:'#37474f',paddingBottom:20,}}>
+     
+    <View style={{flex:1,backgroundColor:'#E9EFE5',}}>  
+    {/* <ScrollView> */}
+         <View style={{flex:1,backgroundColor:'white',marginTop:60,marginHorizontal:40,marginBottom:120,paddingBottom:10,borderBottomLeftRadius:40,borderBottomRightRadius:40,}}>
+        <View style={{backgroundColor:colors.primary,paddingBottom:20,}}>
         <View style={{alignItems:'center',justifyContent:'center',borderRadius:60,paddingTop:40,paddingBottom:20,}}>
         <Image
               source={require('../../assets/images/profile.png')}
@@ -31,16 +34,16 @@ const ProfileTab = ({navigation}) => {
        <TouchableOpacity onPress={nextScreen} >
         <View style={{flexDirection:'row',alignItems:'center'}}>
             <Image source={require('../../assets/images/newaccount.png')}
-            style={{width:40,height:40,tintColor:'#37474f',marginEnd:10}}/>
-        <Text style={{color:'#37474f',fontSize:16,fontWeight:'700'}}>Register New User</Text>
+            style={{width:40,height:40,tintColor:colors.primary,marginEnd:10}}/>
+        <Text style={{color:colors.primary,fontSize:16,fontWeight:'700'}}>Register New User</Text>
 
         </View>
        </TouchableOpacity>
         <TouchableOpacity onPress={logout}>
         <View style={{flexDirection:'row',alignItems:'center',marginTop:10}}>
             <Image source={require('../../assets/images/power.png')}
-            style={{width:40,height:40,tintColor:'#37474f',marginEnd:10}}/>
-        <Text style={{color:'#37474f',fontSize:16,fontWeight:'700'}}>Sign Out</Text>
+            style={{width:40,height:40,tintColor:colors.primary,marginEnd:10}}/>
+        <Text style={{color:colors.primary,fontSize:16,fontWeight:'700'}}>Sign Out</Text>
 
         </View>
        </TouchableOpacity>
@@ -49,8 +52,10 @@ const ProfileTab = ({navigation}) => {
       <CustomButton title={"Register new User"} onPress={nextScreen} color={'green'}/>
       </View> */}
     </View>
+     {/* </ScrollView> */}
 
     </View>
+    // </ScrollView>
  
     
   )

@@ -1,6 +1,8 @@
 import { View, Text,TouchableOpacity, screenWidth,ScrollView } from 'react-native'
 import React from 'react'
+import {colors} from '../../assets/colors'
 import PieChartForData from '../../components/PieChartForDAta'
+import {Dimensions} from 'react-native';
 import {
   LineChart,
   BarChart,
@@ -10,8 +12,10 @@ import {
   StackedBarChart
 } from "react-native-chart-kit";
 //import { ScrollView } from 'react-native-gesture-handler';
-
+//const windowWidth = Dimensions.get('window').width;
 export default function HomeTab() {
+  
+  const windowWidth = Dimensions.get('window').width;
   const handlePress = () => {
     console.log('Button pressed');
   };
@@ -28,8 +32,9 @@ export default function HomeTab() {
   const chartConfig1= {
     backgroundGradientFrom: 'white',//'#ff0000', // Start color (red)
     backgroundGradientTo: 'white',//'#ff0000',   // End color (red)
-    color: (opacity = 1) => `rgba(55, 71, 79, ${opacity})`, // Bar color (blue)
+    //color: (opacity = 1) => `rgba(55, 71, 79, ${opacity})`, // Bar color (blue)
     //color: () => 'blue',
+    color: (opacity = 1) => `rgba(39,97,76, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     
@@ -38,10 +43,11 @@ export default function HomeTab() {
     
     backgroundGradientFrom: 'white', // Start color (black)
     backgroundGradientTo: 'white',   // End color (black)
-    color: (opacity = 1) => `rgba(55, 71, 79, ${opacity})`, // Data color (black)
-    //color: (opacity = 1) => `rgba(55, 80, 240, ${opacity})`,
+   // color: (opacity = 1) => `rgba(55, 71, 79, ${opacity})`, // Data color (black)
+    color: (opacity = 0.7) => `rgba(39,97,76, ${opacity})`,
     strokeWidth: 16, // Width of the chart's lines
     barPercentage: 0.5,
+    
     
   };
   const data2 = {
@@ -49,7 +55,7 @@ export default function HomeTab() {
     data: [0.4, 0.6, 0.8]
   };
   const data1 = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "June","July","Aug","Sept","Oct","Nov","Dec"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","July","Aug","Sep","Oct","Nov","Dec"],
     datasets: [
       {
         data: [20, 45, 28, 80, 99, 43,32,17,70,10,28,60]
@@ -60,77 +66,99 @@ export default function HomeTab() {
     {
       name: "Piezometer",
       population: 21500000,
-      color: "#37474f",
-      legendFontColor: "#37474f",
+      color: "#9C5C5C",
+      legendFontColor: "#9C5C5C",
       legendFontSize: 14
     },
     {
       name: "CEMS",
       population: 2800000,
-      color: "#91a3b0",
-      legendFontColor: "#91a3b0",
+      color: "#C7B777",
+      legendFontColor: "#C7B777",
       legendFontSize: 14
     },
     {
       name: "AQMS",
       population: 5527612,
-      color: "#7F7F7F",
-      legendFontColor: "#7F7F7F",
+      color: "#537EFF",
+      legendFontColor: "#537EFF",
       legendFontSize: 14
     },
     {
       name: "Flow Meter",
       population: 8538000,
-      color: "#56707c",
-      legendFontColor: "#56707c",
+      color: "#6AAA92",
+      legendFontColor: "#6AAA92",
       legendFontSize: 14
     },
     {
       name: "Water Analyzer",
       population: 11920000,
-      color: "#555d50",
-      legendFontColor: "#555d50",
+      color: "#27614C",
+      legendFontColor: "#27614C",
       legendFontSize: 14
     }
   ];
   return (
     <ScrollView >
-      <View style={{flex:1,backgroundColor:'#eeeeee',paddingBottom:100}} >
-     <View style={{backgroundColor:'white',borderRadius:8,margin:8}}>
+      <View style={{flex:1,backgroundColor:'#E9EFE5',paddingBottom:70,}} >
+        <View style={{marginTop:14,}}>
+        <View style={{alignItems:'center',backgroundColor:colors.primary,height:50,justifyContent:'center',borderRadius:10,marginHorizontal:14}}>
+          
+            <Text style={{fontSize:20,color:'white',fontWeight:'500'}}>Product Distribution</Text>
+            </View>
+        </View>
+     <View style={{backgroundColor:'white',borderRadius:10,margin:14,}}>
       <PieChart
   data={data}
  // width={screenWidth}
- width={400}
-  height={250}
+ width={windowWidth-30}
+  height={230}
   chartConfig={chartConfig}
-  accessor={"population"}
+  accessor={"population"} 
   backgroundColor={"transparent"}
-  paddingLeft={"5"}
-  center={[30,5]}
+  paddingLeft={"-10"}
+  center={[20,2]}
   hasLegend={true}
   
   //absolute
 />
 </View>
-<View style={{backgroundColor:'white',borderRadius:8,margin:8,paddingLeft:8}}>
+<View style={{}}>
+        <View style={{alignItems:'center',backgroundColor:colors.primary,height:50,justifyContent:'center',borderRadius:10,marginHorizontal:14}}>
+          
+            <Text style={{fontSize:20,color:'white',fontWeight:'500'}}>Monthly Sales</Text>
+            </View>
+        </View>
+<View style={{backgroundColor:'white',borderRadius:10,margin:14,}}>
 <BarChart
-  //style={{}}
+  style={{marginVertical:10,}}
   data={data1}
-  width={370}
-  height={250}
+  width={windowWidth-40}
+  height={220}
+  
+  //paddingLeft={"10"}
+  //paddingRight={"10"}
   yAxisLabel="$"
   chartConfig={chartConfig1}
   //verticalLabelRotation={10}
-  
 />
 </View >
-<View style={{backgroundColor:'white',borderRadius:8,margin:8,paddingLeft:8}}>
+<View style={{}}>
+        <View style={{alignItems:'center',backgroundColor:colors.primary,height:50,justifyContent:'center',borderRadius:10,marginHorizontal:14}}>
+          
+            <Text style={{fontSize:20,color:'white',fontWeight:'500'}}>Orders Distribution</Text>
+            </View>
+        </View>
+<View style={{backgroundColor:'white',borderRadius:14,margin:14}}>
 <ProgressChart
   data={data2}
-  width={380}
-  height={250}
-  strokeWidth={20}
-  radius={32}
+  style={{marginVertical:10,marginRight:-20,}}
+  width={windowWidth-60}
+  height={220}
+  //marginLeft={"-10"}
+  strokeWidth={18} 
+  radius={25}
   chartConfig={chartConfig2}
   hideLegend={false}
   

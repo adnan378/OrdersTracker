@@ -1,7 +1,6 @@
 import { View,Pressable, Text, Image, ScrollView,Platform, TextInput, Button, Modal, TouchableOpacity ,StyleSheet, Alert} from 'react-native'
 import React, { useState } from 'react'
 import {colors} from '../../assets/colors'
-
 import { Dropdown } from 'react-native-element-dropdown';
 import CustomButton from '../../components/CustomButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -9,7 +8,6 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import DocumentPicker from 'react-native-document-picker';
 //import DatePicker from 'react-native-date-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-//import DatePick from '../../components/DatePick';
 //import { DateTimePicker } from '@react-native-community/datetimepicker';
 
  
@@ -21,10 +19,11 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 //   setModalVisible(false);
 //   console.warn("option is registered");
 // };
-const handleSubmitButton =()=>{
+const handleSubmitButton =({navigation})=>{
     
   // console.log("Submitted");
    Alert.alert("Your order is submitted")
+   //navigation.navigate('All Orders')
  }
  const selectDoc =async () =>{
   try{
@@ -50,7 +49,7 @@ const handleSubmitButton =()=>{
 
 
 
-export default function AddOrderTab(props) {
+export default function EditOrder({navigation}) {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false)
   
@@ -58,8 +57,13 @@ export default function AddOrderTab(props) {
   const data = [{ value: 1, label: 'Trading' }, { value: 2, label: 'Pending', }, { value: 3, label: 'In Production' }, { value: 4, label: 'Testing' }, { value: 5, label: 'Packed' }, { value: 6, label: 'Shipped' }]
   const [deadline,setDeadline] = useState("")
   const [date, setDate] = useState(new Date());
- //const [date,setDate]=useState(props.item.time? new Date(props.item.time) : new Date())
   const [showPicker,setShowPicker]=useState(false);
+  const handleSubmitButton =()=>{
+    
+    // console.log("Submitted");
+     Alert.alert("Your order is submitted")
+     navigation.navigate('Show All')
+   }
 
   const toggleDatePicker =() =>{
     setShowPicker(!showPicker);
@@ -270,11 +274,8 @@ export default function AddOrderTab(props) {
         {/* <View style={{ marginVertical: 10 }}>
           <Button title='Submit' color='green' />
         </View> */}
-        {/* <View style={{marginVertical:20}}>
-          <DatePick/>
-        </View> */}
         <View style={{marginTop:10,marginRight:-8}}>
-          <CustomButton title="Submit" onPress={handleSubmitButton} color={colors.primary}/>
+          <CustomButton title="Update" onPress={handleSubmitButton} color={colors.primary}/>
         </View>
 
 
